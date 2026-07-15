@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction Retard Vol</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Prédiction de Retard de Vol</h1>
+    </header>
+    
+    <main>
+        <form id="prediction-form">
+            <fieldset>
+                <legend>Date du vol</legend>
+                <input type="number" name="DAY" placeholder="Jour (1-31)" required min="1" max="31">
+                <input type="number" name="MONTH" placeholder="Mois (1-12)" required min="1" max="12">
+                <input type="number" name="YEAR" placeholder="Année" required>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Horaires</legend>
+                <input type="text" name="CRS_DEP_TIME" placeholder="Heure départ prévue (HH:MM)" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+                <input type="text" name="DEP_TIME" placeholder="Heure départ réelle (HH:MM)" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+                <input type="text" name="CRS_ARR_TIME" placeholder="Heure arrivée prévue (HH:MM)" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+            </fieldset>
+            
+            <fieldset>
+                <legend>Vol</legend>
+                <input type="text" name="ORIGIN" placeholder="Code aéroport départ" required maxlength="3">
+                <input type="text" name="AIRLINE" placeholder="Compagnie aérienne" required>
+                <input type="text" name="DEST" placeholder="Code aéroport arrivée" required maxlength="3">
+                <input type="number" name="DISTANCE" placeholder="Distance (km)" required min="0">
+            </fieldset>
+            
+            <button type="submit">Prédire</button>
+        </form>
+        
+        <div id="result"></div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/monnjs.js') }}"></script>
+</body>
+</html>
